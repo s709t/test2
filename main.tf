@@ -16,10 +16,10 @@ resource "null_resource" "create_files" {
   }
 }
 
-resource "aws_s3_bucket_object" "files" {
+resource "aws_s3_bucket_object" "upload_files" {
   bucket = aws_s3_bucket.bucket_object.bucket
   for_each = fileset( path.module,"*.txt")
   key    = each.value
-  source = each.value
+  source = "${path.module}/${each.value}"
 }
 
