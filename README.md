@@ -7,6 +7,7 @@
 ------------
 ### How to use it
 ```
+    bunlde install
     bundle exec kitchen create
     bundle exec kitchen converge
     bundle exce kitchen verify
