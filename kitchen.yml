@@ -1,0 +1,16 @@
+driver:
+  name: terraform
+provisioner:
+  name: terraform
+
+verifier:
+  name: awspec
+
+platforms:
+  - name: aws
+
+suites:
+  - name: kt_suite
+    verifier:
+     patterns:
+     - test/**/*.rb
