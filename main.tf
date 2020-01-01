@@ -2,11 +2,6 @@ provider "aws" {
   region     = "us-west-2"
 }
 
-# resource "null_resource" "create_files" {
-#   provisioner "local-exec" {
-#     command = "python3 files.py"
-#   }
-# }
 resource "aws_s3_bucket" "new_bucket" {
   bucket = var.bucket
   acl    = "private"
@@ -15,6 +10,13 @@ resource "aws_s3_bucket" "new_bucket" {
     Environment = "Dev"
   }
 }
+
+resource "local_file" "create_files" {
+    count = var.counter_files
+    content     = timestamp()
+    filename = "file${count.index+1}.txt"
+}
+
 resource "aws_s3_bucket_object" "upload_files" {
   bucket = aws_s3_bucket.new_bucket.bucket
   for_each = fileset(path.module, "*.txt")
