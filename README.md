@@ -7,8 +7,5 @@
 ------------
 ### How to use it
 ```
-    bundle exec kitchen create
-    bundle exec kitchen converge
-    bundle exce kitchen verify
-    bundle exec kitchen destroy
+    chmod +x run.sh && ./run.sh
  ```
